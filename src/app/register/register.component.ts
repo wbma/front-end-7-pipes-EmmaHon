@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
     username: '',
     password: '',
     email: '',
-    full_name: ''
+    full_name: '',
   };
 
   constructor(private mediaService: MediaService) {

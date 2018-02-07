@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem('token') !== null) {
       this.mediaService.getUserData().subscribe(response => {
       }, (error: HttpErrorResponse) => {
-        this.router.navigate(['login']);
+        this.router.navigate(['front']);
       });
     }
   }

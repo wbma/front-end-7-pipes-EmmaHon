@@ -9,6 +9,7 @@ export class MediaService {
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   username: string;
   password: string;
+  email: string;
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -16,10 +17,13 @@ export class MediaService {
   public login() {
     console.log('username: ' + this.username);
     console.log('pwd: ' + this.password);
+    console.log('mail: ' + this.email);
+
 
     const body = {
       username: this.username,
-      password: this.password
+      password: this.password,
+      email: this.email,
     };
 
     const settings = {
@@ -44,5 +48,10 @@ export class MediaService {
     };
     return this.http.get(this.apiUrl + '/users/user', settings);
   }
-
+  upload(formData) {
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
+    };
+    return this.http.post(this.apiUrl + '/media', formData, settings);
+  }
 }
