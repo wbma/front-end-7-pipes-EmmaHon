@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {User} from "../interface/user";
 
 @Injectable()
 export class MediaService {
@@ -16,7 +17,7 @@ export class MediaService {
 
   public login() {
     console.log('username: ' + this.username);
-    console.log('pwd: ' + this.password);
+    console.log('password: ' + this.password);
     console.log('mail: ' + this.email);
 
 
@@ -39,7 +40,7 @@ export class MediaService {
       this.status = error.error.message;
     });
   }
-  register(user) {
+  register(user: User) { // :User
     return this.http.post(this.apiUrl + '/users', user);
   }
   getUserData() {
