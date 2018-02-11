@@ -1,7 +1,10 @@
+<p> Choose a file </p>
 <input type="file" name="file" (change)="setFile($event)">
 <br>
+<p>Title </p>
 <input [(ngModel)]="media.title" type="text" name="title">
 <br>
+<p>Description </p>
 <textarea [(ngModel)]="media.description" name="description"></textarea>
 <br>
 <button type="submit" (click)="startUpload()">Upload</button>

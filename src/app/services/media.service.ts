@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {User} from "../interface/user";
+import {User} from '../interface/user';
 
 @Injectable()
 export class MediaService {
 
+  test = 'kara123';
   status: string;
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   username: string;
@@ -55,4 +56,16 @@ export class MediaService {
     };
     return this.http.post(this.apiUrl + '/media', formData, settings);
   }
+  getNewFiles() {
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token')),
+    };
+    return this.http.get(this.apiUrl + '/media', settings);
+  }
+
+  getMediaFiles(start: number, amount: number) {
+
+    return this.http.get(this.apiUrl + '/media?start=' + start + '&limit=' + amount);
+  }
 }
+
